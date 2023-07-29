@@ -21,6 +21,7 @@ There are three datasets:
 ..* members
 
 The datasets are related as follows
+
 ![image](https://github.com/LightIndustries/8_Week_SQL_Challenge/assets/52246820/324d2f38-3235-4cff-a1cd-3cc4bc78546d)
 
 ## Solutions to the Questions
