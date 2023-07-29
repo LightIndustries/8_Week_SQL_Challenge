@@ -42,3 +42,40 @@ ORDER BY customer_id ASC;
 |A           |        	 76|
 |B           |           74|
 |C	         |           36|
+
+### 2. How many days has each customer visited the restaurant?
+#### QUERY
+```SQL
+SELECT
+  	customer_id,
+    COUNT(DISTINCT order_date) as num_days_visited
+FROM dannys_diner.sales
+GROUP BY customer_id;
+```
+#### ANSWER
+|customer_id |days_visited |
+|------------|-------------|
+|A           |        	 4|
+|B           |           6|
+|C	         |           2|
+
+### 3. What was the first item from the menu purchased by each customer?
+#### QUERY
+```SQL
+SELECT DISTINCT customer_id, product_name FROM
+(SELECT
+  	customer_id,
+    order_date,
+    product_name,
+    RANK() OVER (PARTITION BY customer_id ORDER BY order_date ASC) as rank
+FROM dannys_diner.sales
+LEFT JOIN dannys_diner.menu ON sales.product_id=menu.product_id) win_query
+WHERE win_query.rank = 1;
+```
+#### ANSWER
+|customer_id |product_name    |
+|------------|----------------|
+|A           |        	 curry|
+|A           |           sushi|
+|B	         |           curry|
+|C	         |           ramen|
