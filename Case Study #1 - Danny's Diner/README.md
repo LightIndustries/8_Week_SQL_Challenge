@@ -16,9 +16,9 @@ The questions are:
 
 ## The Data
 There are three datasets:
-..* sales
-..* menu
-..* members
+* sales
+* menu
+* members
 
 The datasets are related as follows
 
